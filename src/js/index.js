@@ -1,3 +1,7 @@
+const beginnerBtn = document.getElementById("beginner-btn");
+const intermediateBtn = document.getElementById("intermediate-btn");
+const expertBtn = document.getElementById("expert-btn");
+
 // tab
 function openCity(evt, tabName) {
   // Declare all variables
@@ -22,3 +26,17 @@ function openCity(evt, tabName) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+// seleccionar su version de cuadriculas
+beginnerBtn.addEventListener("click", () => {
+  sessionStorage.setItem('gridsNumber', 4);
+  window.location.replace('game.html');
+})
+intermediateBtn.addEventListener("click", () => {
+  sessionStorage.setItem('gridsNumber', 6);
+  window.location.replace('game.html');
+})
+expertBtn.addEventListener("click", () => {
+  sessionStorage.setItem('gridsNumber', 8);
+  window.location.replace('game.html');
+})
