@@ -4,7 +4,9 @@
   "description": "game",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "serve ./src",
+    "deploy": "gh-pages -d src"
   },
   "keywords": [
     "js",
@@ -14,5 +16,9 @@
     "buscaminas"
   ],
   "author": "Andu15",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^6.1.0",
+    "serve": "^14.2.1"
+  }
 }
