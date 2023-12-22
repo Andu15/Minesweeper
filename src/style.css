@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Overlock&display=swap');
+
+* {
+  margin:  0;
+  padding: 0;
+  text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+:root {
+  --color-lilac: #9C56FF;
+  --color-medium-purple: #6A00FF;
+  --color-dark-purple: #312C70;
+  --color-coral: #EE726E;
+  --color-smoke: #E6E5EE;
+  --font-irish-grover: 'Irish Grover', cursive;
+  --font-overlock: 'Overlock', cursive;
+  --size-xs: 6px;
+  --size-s: 10px;
+  --size-sm: 14px;
+  --size-m: 18px;
+  --size-ml: 22px;
+  --size-l: 26px;
+  --size-xl: 30px;
+  --size-2xl: 34px;
+  --size-3xl: 38px;
+}
+
+body {
+  background-color: var(--color-medium-purple);
+}
+
+.header {
+  background-color: var(--color-dark-purple);
+  margin-top: 2em;
+}
+.title {
+  color: var(--color-smoke);
+  text-align: center;
+  padding: .5em;
+  font-family: var(--font-irish-grover);
+  font-size: var(--size-ml);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.summary-section {
+  width: 80vw;
+  margin: auto;
+}
+.description {
+  color: var(--color-smoke);
+  font-family: var(--font-overlock);
+  font-size: var(--size-m);
+  margin: 2em .5em;
+}
+.minesweeper-img {
+  display: none;
+}
+
+/* TABS PANEL */
+.options-section {
+  width: 90vw;
+  margin: auto;
+}
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 0;
+  transition: 0.5s;
+  color: var(--color-smoke);
+  font-size: var(--size-m);
+  font-family: var(--font-irish-grover);
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: var(--color-dark-purple);
+  border-radius: 20px 20px 0 0;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: var(--color-dark-purple);
+  border-radius: 20px 20px 0 0;
+}
+.divider {
+  background-color: var(--color-dark-purple);
+  height: 1.2px;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 1.5em 2em;
+  border: none;
+  color: var(--color-smoke);
+}
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+.list-item {
+  margin-bottom: 1em;
+  font-family: var(--font-overlock);
+}
+.btn-item {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  background: transparent; 
+}
+.btn-level {
+  color: var(--color-smoke);
+  font-family: var(--font-overlock);
+  border-radius: 20px;
+  border: 1px solid var(--color-dark-purple);
+  padding: 10px 0;
+  width: 10em;
+  font-size: var(--size-m);
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+.btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.btn-level:hover {
+  background-color: var(--color-dark-purple);
+}
+.btn-level:focus {
+  background-color: var(--color-dark-purple);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-btn {
+  position: relative;
+  height: 7em;
+}
+.btn-redirect {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  background-color: var(--color-lilac);
+  border-radius: 50%;
+  height:100px;
+  width:100px;
+}
+.btn-redirect:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.end-link {
+  color: var(--color-smoke);
+  font-family: var(--font-irish-grover);
+  font-size: var(--size-m);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@media (min-width: 500px) {
+  .header {
+    margin-top: 3em;
+  }
+  .title {
+    padding: .9em;
+    font-size: var(--size-l);
+  }
+  .summary-section {
+    width: 75vw;
+  }
+  .description {
+    text-align: center;
+    font-size: var(--size-ml);
+  }
+  /* TABS PANEL */
+  .tab button {
+    padding: 18px 0;
+    font-size: var(--size-ml);
+  }
+  .rules {
+    font-size: var(--size-m);
+  }
+  .divider {
+    height: 2px;
+  }
+  .tabcontent {
+    width: 70vw;
+    margin: auto;
+  }
+  .btn-level {
+    margin-top: .8em;
+    font-size: var(--size-ml);
+  }
+}
+
+@media (min-width: 600px) {
+  .rules {
+    font-size: var(--size-ml);
+  }
+}
+
+@media (min-width: 840px) {
+  .header {
+    position: relative;
+  }
+  .title {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    background-color: var(--color-dark-purple);
+    width: 43vw;
+  }
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2em;
+  }
+  .summary-section {
+    width: 100%;
+  }
+  .description {
+    margin: 0 1.5em 2em;
+  }
+  .minesweeper-img {
+    display: block;
+    margin: auto;
+    width: 70%;
+  }
+  .options-section {
+    width: 100%;
+  }
+  .divider {
+    margin-top: .5em;
+  }
+  .tabcontent {
+    width: 90%;
+    min-height: 550px;
+  }
+  .btn-redirect {
+    bottom: 2em;
+    left: 2em;
+  }
+}
+
+@media (min-width: 920px) {
+  .description {
+    margin: 2em 1.5em;
+  }
+  .btn-level {
+    margin-top: 1.9em;
+    padding: 17px 0;
+  }
+}
+
+@media (min-width: 1020px) {
+  .description {
+    margin: 3em 2.5em 2em;
+  }
+  .minesweeper-img {
+    width: 50%;
+  }
+  .tabcontent {
+    padding: 2em 3em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .summary-section {
+    width: 90%;
+  }
+  .options-section {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .description {
+    margin: 1em 2.5em 2em;
+  }
+}
+
+@media (min-width: 1500px) {
+  .title {
+    top: 1em;
+  }
+}
+
+@media (min-width: 1610px) {
+  .title {
+    top: 2em;
+  }
+}
+
+@media (min-width: 1670px) {
+  .title {
+    top: 3em;
+  }
+}
