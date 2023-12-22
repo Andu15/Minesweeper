@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Overlock&display=swap');
+
+* {
+  margin:  0;
+  padding: 0;
+  text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+:root {
+  --color-lilac: #9C56FF;
+  --color-medium-purple: #6A00FF;
+  --color-dark-purple: #312C70;
+  --color-coral: #EE726E;
+  --color-warning: #e32424;
+  --color-smoke: #E6E5EE;
+  --color-dark-gray: #908f94;
+  --color-white: #F9F8FC;
+  --font-irish-grover: 'Irish Grover', cursive;
+  --font-overlock: 'Overlock', cursive;
+  --size-xs: 6px;
+  --size-s: 10px;
+  --size-sm: 14px;
+  --size-m: 18px;
+  --size-ml: 22px;
+  --size-l: 26px;
+  --size-xl: 30px;
+  --size-2xl: 34px;
+  --size-3xl: 38px;
+}
+
+body {
+  background-color: var(--color-medium-purple);
+}
+
+.subtitle {
+  color: var(--color-white);
+  text-align: center;
+  margin-top: 4rem;
+  font-size: var(--size-2xl);
+}
+
+#error-message {
+  color: var(--color-warning);
+  font-weight: bold;
+  text-align: center;
+  height: 20px;
+  padding: 3rem 0;
+}
+
+.game {
+  margin: 2rem 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+section:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section .ada-img {
+  width: 140px;
+}
+
+.btn-new-game {
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 110px;
+  margin-top: 1rem;
+  border-radius: 7px;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+  border-box: 1px solid var(--color-lilac);
+}
+
+.score {
+  color: var(--color-white);
+  font-size: 15px;
+}
+
+.game-board {
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  margin-top: 1rem;
+}
+
+.box {
+  width: 2.1rem;
+  height: 2.1rem;
+  background: linear-gradient(var(--color-smoke), var(--color-dark-gray));
+  border: .2px solid var(--color-dark-purple);
+}
+
+.btn {
+  background: transparent;
+}
+.btn-level {
+  color: var(--color-smoke);
+  font-family: var(--font-overlock);
+  border-radius: 20px;
+  border: 1px solid var(--color-dark-purple);
+  padding: 10px 0;
+  width: 10em;
+  font-size: var(--size-m);
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+.btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btn-level:hover {
+  background-color: var(--color-dark-purple);
+}
+
+.btn-level:focus {
+  background-color: var(--color-dark-purple);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

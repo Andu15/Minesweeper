@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buscaminas</title>
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
   <header class="header">
     <h1 class="title">BUSCAMINAS</h1>
@@ -16,32 +18,37 @@
       <p class="description">
         El juego consiste en despejar todas las casillas de una pantalla que no oculten una mina.
       </p>
-      <img class="minesweeper-img" src="assets/images/buscaminas.png" alt="minesweeper image"/>
+      <img class="minesweeper-img" src="assets/images/buscaminas.png" alt="minesweeper image" />
     </section>
-    
+
     <section class="options-section">
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Reglas del juego</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Nivel</button>
+        <button class="tablinks" onclick="openCity(event, 'rules')" id="defaultOpen">Reglas del juego</button>
+        <button class="tablinks" onclick="openCity(event, 'level')">Nivel</button>
       </div>
-      <hr class="divider"/>
-      <div id="London" class="tabcontent">
+      <hr class="divider" />
+      <div id="rules" class="tabcontent">
         <ul>
           <li class="list-item rules">
-            Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes. Así, si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una esquina o borde) hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de las casillas vecinas tiene mina y estas se descubren automáticamente.
+            Algunas casillas tienen un número, este número indica las minas que son en todas las casillas circundantes.
+            Así, si una casilla tiene el número 3, significa que de las ocho casillas que hay alrededor (si no es en una
+            esquina o borde) hay 3 con minas y 5 sin minas. Si se descubre una casilla sin número indica que ninguna de
+            las casillas vecinas tiene mina y estas se descubren automáticamente.
           </li>
           <li class="list-item rules">
-            Cuando deduces que una casilla tiene una mina puedes marcarla (o desmarcarla) con una bandera haciendo click con el botón derecho.
+            Cuando deduces que una casilla tiene una mina puedes marcarla (o desmarcarla) con una bandera haciendo click
+            con el botón derecho.
           </li>
           <li class="list-item rules">
-            La partida finaliza cuando liberas todas las casillas que no tienen mina, o cuando por error haces click sobre una casilla minada.
+            La partida finaliza cuando liberas todas las casillas que no tienen mina, o cuando por error haces click
+            sobre una casilla minada.
           </li>
         </ul>
       </div>
-      <div id="Paris" class="tabcontent">
+      <div id="level" class="tabcontent">
         <ul>
           <li class="list-item btn-item">
-            <button class="btn btn-level">Principiante</button>
+            <a class="end-link" href="endGame.html"><button class="btn btn-level">Principiante</button></a>
           </li>
           <li class="list-item btn-item">
             <button class="btn btn-level">Intermedio</button>
@@ -54,8 +61,9 @@
     </section>
   </main>
   <section class="container-btn">
-    <button class="btn btn-redirect"><a class="end-link" href="endGame.html">FIN DE PARTIDA</a></button>
+    <button class="btn btn-redirect"><a class="end-link" href="game.html">PARTIDA</a></button>
+    <script src="js/index.js"></script>
   </section>
-  <script src="main.js"></script>
 </body>
+
 </html>
