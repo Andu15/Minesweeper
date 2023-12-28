@@ -2,18 +2,42 @@ const finalScoreElement = document.querySelector("#finalScore");
 const gameBoardElement = document.querySelector(".game-board");
 const errorMessageElement = document.querySelector("#error-message");
 const btnNewGameElement = document.querySelector(".btn-new-game");
+const bombsTotalCounter = document.querySelector(".bombs-total-counter");
+const bombsFoundCounter = document.querySelector(".bombs-found-counter");
 
-const totalGrids = 16;
-const gridPerRow = 4;
+const squares = JSON.parse(sessionStorage.getItem('gridsNumber'));
+
+const totalGrids = Math.pow(squares, 2);
+const gridPerRow = squares;
+const gridPerColumn = squares;
+
 const gameBoardArray = [];
 const scoreUnit = totalGrids / gridPerRow;
 let score = 0;
 let countBombs;
 
-
-fillBoard();
 createBoxDinamic();
+fillBoard();
 
+function createBoxDinamic() {
+  let buttonElemnts = "";
+
+  for (let i = 0; i < totalGrids; i++) {
+    buttonElemnts += `<button id=${i} class="box"></button>`;
+  }
+
+  gameBoardElement.innerHTML = buttonElemnts;
+
+  // const gridSize = Math.sqrt(totalGrids);
+  gameBoardElement.style.gridTemplateColumns = `repeat(${gridPerColumn}, 1fr)`;
+  gameBoardElement.style.gridTemplateRows = `repeat(${gridPerRow}, 1fr)`;
+
+  const boxButtonElements = document.querySelectorAll(".box");
+
+  boxButtonElements.forEach((boxElement) => {
+    boxElement.addEventListener("click", requestCoordinates);
+  });
+}
 
 // Crea una función que rellene de manera aleatoria la matriz del tablero, donde se pueda determinar el número de bombas a colocar.
 function fillBoard() {
@@ -26,35 +50,16 @@ function fillBoard() {
   }
   // Colocar las bombas de manera aleatoria
   let placedBombs = 0;
-
   while (placedBombs < BombsNumber) {
     const bombsRandomPosition = Math.floor(Math.random() * totalGrids);
-    console.log("bombsRandomPosition", bombsRandomPosition);
+
     if (gameBoardArray[bombsRandomPosition] !== "💣") {
       gameBoardArray[bombsRandomPosition] = "💣";
       placedBombs++;
     }
   }
-
-  countBombs = placedBombs
-  console.log("countBombs", countBombs)
-  console.log("gameBoardArray", gameBoardArray)
-}
-
-function createBoxDinamic() {
-  let buttonElemnts = "";
-
-  for (let i = 0; i < totalGrids; i++) {
-    buttonElemnts += `<button id=${i} class="box"></button>`;
-  }
-
-  gameBoardElement.innerHTML = buttonElemnts;
-
-  const boxButtonElements = document.querySelectorAll(".box");
-
-  boxButtonElements.forEach((boxElement) => {
-    boxElement.addEventListener("click", requestCoordinates);
-  });
+  countBombs = placedBombs;
+  bombsTotalCounter.textContent = placedBombs;
 }
 
 // solicitar coordenadas
