@@ -54,7 +54,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
 }
 
 section:first-child {
@@ -64,7 +64,7 @@ section:first-child {
 }
 
 section .ada-img {
-  width: 140px;
+  width: 100px;
 }
 
 .btn-new-game {
@@ -79,7 +79,7 @@ section .ada-img {
 
 .score {
   color: var(--color-white);
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .game-board {
@@ -125,4 +125,6 @@ section .ada-img {
 
 .bombs-total-container {
   color: var(--color-white);
+  margin-top: 1rem;
+  text-align: center;
 }
