@@ -13,8 +13,10 @@ const scoreUnit = totalGrids / gridsNumber;
 let score = 0;
 let countBombs;
 
-createBoxDinamic();
+let isActivateGame = true;
+
 fillBoard();
+createBoxDinamic();
 
 function createBoxDinamic() {
   let buttonElemnts = "";
@@ -31,9 +33,11 @@ function createBoxDinamic() {
 
   const boxButtonElements = document.querySelectorAll(".box");
 
-  boxButtonElements.forEach((boxElement) => {
-    boxElement.addEventListener("click", requestCoordinates);
-  });
+  if(isActivateGame){
+    boxButtonElements.forEach((boxElement) => {
+      boxElement.addEventListener("click", requestCoordinates);
+    });
+  }
 }
 
 // Crea una función que rellene de manera aleatoria la matriz del tablero, donde se pueda determinar el número de bombas a colocar.
@@ -85,6 +89,8 @@ function validateBombPositions(x, y) {
     countBombs--
     finalScoreElement.textContent = score;
     errorMessageElement.textContent = "Exploto la bomba, perdiste";
+    isActivateGame = false;
+    disableButtons();
   } else {
     score += scoreUnit;
     finalScoreElement.textContent = score;
@@ -92,10 +98,10 @@ function validateBombPositions(x, y) {
     errorMessageElement.textContent = `No hay bomba. Bombas adyacentes: ${adjacentBombCount}`;
   }
 
-  if (countBombs === 0) {
-    disableButtons();
-    return;
-  }
+  // if (countBombs === 0) {
+  //   disableButtons();
+  //   return;
+  // }
 }
 
 // Crea una función que determine el número de bombas adyacentes a la coordenada que se acaba de ingresar.
