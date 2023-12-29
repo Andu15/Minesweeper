@@ -5,14 +5,11 @@ const btnNewGameElement = document.querySelector(".btn-new-game");
 const bombsTotalCounter = document.querySelector(".bombs-total-counter");
 const bombsFoundCounter = document.querySelector(".bombs-found-counter");
 
-const squares = JSON.parse(sessionStorage.getItem('gridsNumber'));
-
-const totalGrids = Math.pow(squares, 2);
-const gridPerRow = squares;
-const gridPerColumn = squares;
+const gridsNumber = JSON.parse(sessionStorage.getItem('gridsNumber'));
+const totalGrids = Math.pow(gridsNumber, 2);
 
 const gameBoardArray = [];
-const scoreUnit = totalGrids / gridPerRow;
+const scoreUnit = totalGrids / gridsNumber;
 let score = 0;
 let countBombs;
 
@@ -29,8 +26,8 @@ function createBoxDinamic() {
   gameBoardElement.innerHTML = buttonElemnts;
 
   // const gridSize = Math.sqrt(totalGrids);
-  gameBoardElement.style.gridTemplateColumns = `repeat(${gridPerColumn}, 1fr)`;
-  gameBoardElement.style.gridTemplateRows = `repeat(${gridPerRow}, 1fr)`;
+  gameBoardElement.style.gridTemplateColumns = `repeat(${gridsNumber}, 1fr)`;
+  gameBoardElement.style.gridTemplateRows = `repeat(${gridsNumber}, 1fr)`;
 
   const boxButtonElements = document.querySelectorAll(".box");
 
@@ -41,7 +38,7 @@ function createBoxDinamic() {
 
 // Crea una función que rellene de manera aleatoria la matriz del tablero, donde se pueda determinar el número de bombas a colocar.
 function fillBoard() {
-  const BombsNumber = gridPerRow;
+  const BombsNumber = gridsNumber;
   gameBoardArray.length = totalGrids; // Reiniciar la matriz del tablero
 
   // Rellenar la matriz del tablero con espacios vacíos
@@ -69,9 +66,8 @@ function requestCoordinates(event) {
 
 // convertir el indice en coordenadas
 function getCoordinates(index) {
-  const x = (index % gridPerRow) + 1;
-  const y = Math.floor(index / gridPerRow) + 1;
-
+  const x = (index % gridsNumber) + 1;
+  const y = Math.floor(index / gridsNumber) + 1;
   validateCoordinates(x, y);
 }
 
@@ -82,8 +78,9 @@ function validateCoordinates(x, y) {
 
 //evalúe si en la posición de la matriz ingresada por coordenadas hay una bomba o no y le indique al usuario con un alert si exploto una bomba, en caso de que no lo haga deberá pedir otra coordenada.
 function validateBombPositions(x, y) {
-  let indexInArray = (x + 4 * (y - 1)) - 1;
-  findBoxElement(indexInArray)
+  let indexInArray = (x + gridsNumber * (y - 1)) - 1;
+  findBoxElement(indexInArray);
+
   if (gameBoardArray[indexInArray] === "💣") {
     countBombs--
     finalScoreElement.textContent = score;
@@ -94,7 +91,7 @@ function validateBombPositions(x, y) {
     const adjacentBombCount = countAdjacentBombs(x, y);
     errorMessageElement.textContent = `No hay bomba. Bombas adyacentes: ${adjacentBombCount}`;
   }
-  console.log("countBombs", countBombs)
+
   if (countBombs === 0) {
     disableButtons();
     return;
@@ -104,6 +101,7 @@ function validateBombPositions(x, y) {
 // Crea una función que determine el número de bombas adyacentes a la coordenada que se acaba de ingresar.
 function countAdjacentBombs(x, y) {
   const bombSymbol = "💣";
+  
   let count = 0;
 
   // Coordenadas adyacentes (8 direcciones)
@@ -124,8 +122,8 @@ function countAdjacentBombs(x, y) {
     const newX = x + dx;
     const newY = y + dy;
 
-    if (newX >= 1 && newX <= gridPerRow && newY >= 1 && newY <= gridPerRow) {
-      const indexInArray = (newX - 1) + gridPerRow * (newY - 1);
+    if (newX >= 1 && newX <= gridsNumber && newY >= 1 && newY <= gridsNumber) {
+      const indexInArray = (newX - 1) + gridsNumber * (newY - 1);
 
       if (gameBoardArray[indexInArray] === bombSymbol) {
         count++;
